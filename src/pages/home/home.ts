@@ -4,6 +4,7 @@ import { AddNotePage } from '../add-note/add-note';
 import { NoteService } from '../../providers/note-service/note-service';
 import { ThrowStmt } from '@angular/compiler';
 import { Note } from '../../models/note.model';
+import { ViewNotePage } from '../view-note/view-note';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,8 @@ import { Note } from '../../models/note.model';
 })
 export class HomePage {
 
-  notes: Promise<Note[]>;
+  private notes: Promise<Note[]>;
+  private note: Note;
 
   constructor(public navCtrl: NavController, private noteService: NoteService) {
 
@@ -23,6 +25,13 @@ export class HomePage {
 
   addNote() {
     this.navCtrl.push(AddNotePage);
+  }
+
+  getNote(createDate: number) {
+    this.noteService.getNote(createDate).then(n => {
+      this.note = n;
+      this.navCtrl.push(ViewNotePage, { note: this.note });
+    })
   }
 
   getAllNotes() {
