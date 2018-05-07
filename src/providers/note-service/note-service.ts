@@ -32,6 +32,21 @@ export class NoteService {
     });
   }
 
+  updateNote(note: Note) {
+    this.notes = this.notes.filter(n => {
+      
+      if(n.createDate === note.createDate) {
+        n.date = note.date != n.date ? note.date : n.date;
+        n.title = note.title != n.title ? note.title : n.title;
+        n.content = note.content != n.content ? note.content : n.content;
+      }
+
+      return n;
+    });
+
+    this.storage.set('notes', this.notes);
+  }
+
   deleteNote(createDate: number) {
     this.notes = this.notes.filter(note => {
       return note.createDate !== createDate

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>view-note</ion-title>
+    <ion-title>View Note</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +16,10 @@
       <div class="note-date">{{ note.date }}</div>
       <hr />
       <div>{{ note.content }}</div>
+      <br />
+      <div>
+        <button ion-button color="primary" block (click)="editNote(note)">Edit Note</button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
