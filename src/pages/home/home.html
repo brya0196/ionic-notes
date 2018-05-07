@@ -10,9 +10,13 @@
 
   <ion-list>
     <button ion-item *ngFor="let note of notes | async" (click)="getNote(note.createDate)">
+      <span class="date">{{ note.date }}</span>
       {{ note.title }}
     </button>
   </ion-list>
 
-  <button ion-button (click)="addNote()" >Add Notes</button>
 </ion-content>
+
+<ion-footer>
+  <button ion-button block (click)="addNote()" >Add Notes</button>
+</ion-footer>
