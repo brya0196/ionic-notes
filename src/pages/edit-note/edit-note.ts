@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, Validator, FormControl } from '@angular/forms';
 import { Note } from '../../models/note.model';
 import { NoteService } from '../../providers/note-service/note-service';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -30,7 +31,7 @@ export class EditNotePage {
   saveNote(note: Note) {
     note.createDate = this.note.createDate;
     this.noteService.updateNote(note);
-    this.navCtrl.pop();
+    this.navCtrl.popToRoot();
   }
 
 }
